@@ -1,0 +1,49 @@
+There are 2 types of memory
+         i) Stack
+         ii) Heap
+fixed sized variables, resources which length can be detected in compiled time are allocated in stack by Rust
+dynamic sized variables, resources are allocated in Heap and in stack the variable holds only three information
+    |----------|-------------------------|
+    |pointer   | address of data in heap |
+    |Length    | length of that data     |
+    |Capacity  | capacity of that data   |
+    --------------------------------------
+let a = 5
+let b = a
+Here b got the copy of a not the reference of a because stack resources copy operation isn't expensive or time-consuming.
+
+But
+let mut n = vec![]
+let mut d = n
+Here if d would get the reference of n then at the end of scope when Rustc will call drop() to free up space then
+firstly n will be dropped . After that when d will be tried to  drop then an error will occur that what does
+d mean as n is no longer exists. To solve this issue Rust brought the concept of ownership and borrowing.
+That's why here ownership moved from n to d. As a result, after this assignment you can't access values under n anymore
+as those values' ownership has been moved to d. Nevertheless, we can deeply copy resources of n to d by clone().
+But heap allocated resources are expensive to allocate again and time-consuming that's why it's not considered as
+the best practise rather borrowing concept is encouraged to follow in such scenarios.
+
+Data race:
+-----------
+If multiple function work with a shared resource then if any of those function change value to that shared resource
+at the time of accessing that resource by another function then it will get un-expected result and that is called
+data race.
+
+Dangling pointer or Dangling reference:
+----------------------------------------
+fn main(){
+    let keep = get();
+
+    println!("{}",keep);
+}
+
+pub fn get <'l1> () ->  &'l1 str  {
+   let s = "hello world";
+   &s
+}
+
+now keep will point the address where resources of s were kept in heap but as s will be dropped at the end
+of get() function execution so what does k denote right now ? Isn't something unexpected? This is called
+dangling pointer or dangling reference. To solve this issue Rust brought lifetime specifier concept.
+If we specify a lifetime with returning item then Rust won't drop the value until reference of that value is
+dropped.

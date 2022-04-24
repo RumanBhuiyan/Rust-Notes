@@ -1,0 +1,6 @@
+Every method is a function but every function is not a method
+
+Method : A function which receives &self as it's first argument. For example when we
+         define function for any struct instances inside impl block.
+
+function : A regular styled function which takes arguments except &self as its first argument.

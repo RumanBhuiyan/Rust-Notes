@@ -1,0 +1,50 @@
+Borrow checker :
+-----------------
+pub fn main(){
+    let mut a = 5; // a is under a lifetime which is provided by Rust itself. let's assume it l1
+    {
+        // all local variables of this inner scope are under l2 lifetime let's say
+        let b = 6;
+        a = &b;
+    }// coming here Rust will call drop() to free up all memory taking by l2 lifetimes variables
+    // So what will be referenced by a now ??
+    println!("a = {}",a);
+}
+
+a will point to garbage or nothing what we expect . This is called dangling reference or dangling pointer.
+Rust doesn't support dangling pointer or dangling reference as its memory safe. That's why Rust brought the concept of
+lifetime
+
+When is lifetime applicable ?
+-----------------------------
+Lifetime is only applicable for reference. If we pass reference as function's argument those are called input lifetimes
+and returning reference of that function is called output lifetimes.
+
+pub fn get_name  <'a> (name : &'a str) -> &'a str {}
+
+Here, lifetime assigned in name is input lifetime and &'a str after -> is output lifetime.
+N.B => lifetime declaration and utilization is applied only in function signature to inform Rust compiler about
+        references lifetimes. They have nothing to do inside function body.
+
+Rules of lifetime:
+------------------
+1. different  parameters will have different lifetimes.
+    Example :
+        Developer code                  :   pub fn get_name(name : &str, reg : &str)
+        Rust compiler generated code    :   pub fn get_name <'a , 'b> (name : &'a str, reg : &'b str)
+
+2. If any function has single parameter and single returning item then Rust compiler will assign same lifetime to them.
+    Example :
+        Developer code                  :   pub fn get_name(name : &str) -> &str {}
+        Rust compiler generated code    :   pub fn get_name <'a> (name : &'a str) -> &'a str {}
+
+3. If any method gets &self or self as it's argument then lifetime of &self or self is assigned to all the
+    input lifetimes and output lifetimes by Rust automatically.
+
+Rust compiler follows these 3 rules to check whether our code handled lifetimes correctly or not and throws its
+suggestions' basis on it. As a developer/programmer if we know these 3 Rules then it will help us to write
+secure lifetime code and debug our code also.
+
+N.B => When Rust compiler assigns lifetime under the hood it detects lifetime when we pass argument in function.
+        Passing argument lifetime is assigned to the function defined variable lifetime. If there are multiple lifetime
+        passed then rust compiler will pick up smallest lifetime and assign it to its parameters.

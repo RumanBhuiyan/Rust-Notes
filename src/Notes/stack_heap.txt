@@ -1,0 +1,14 @@
+immutable variables are stored in stack that's why access time becomes faster in stack rather than heap.
+
+if compiler can detect memory in compile time then those variables are allocated in stack. ex : i8,u32 etc.
+But if memory size is determined in run time then those variables are allocated in heap. ex : vec!
+
+whenever a function is called then this function with all of its resources are pushed into stack, if that function
+has vec![] or dynamic memory containing variable then the variable contains the reference of heap address where
+dynamic memory is allocated. After the execution of function,function instance is popped from stack by compiler
+automatically. We can't manually allocate and de-allocate memory in stack rather compiler does it. That's why
+be careful at the time of recursion . Because it may cause stack overflow. If you write all of your code in main()
+then your programs stack allocation remains alive until main() program ends but if you separate your code into
+various functions then you will call them in need then that function memory will be free after execution that's why
+it makes your program faster and efficient as stack memory is limited so thus type of programming will free up memory
+to make program faster and efficient.
