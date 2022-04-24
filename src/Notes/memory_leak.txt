@@ -1,0 +1,3 @@
+
+If a programmer allocates memory and forgets to de-allocate that memory then after the execution of program,
+allocated space remains in memory and this will occur memory leakage.

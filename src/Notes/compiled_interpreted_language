@@ -1,0 +1,16 @@
+compiled languages : C, C++, Go, Rust etc
+interpreted languages : Python, Javascript, Ruby etc
+
+                Compiled languages
+          -------------------------------
+Compiled languages are compiled into executable .exe file so that any machine can run that exe file.
+That means after compiling, any machine can run that exe file no matters that machine has
+C++/Go/Rust installed or not. As compiled languages makes machine understandable binary code for machine
+that's why these are faster than interpreted languages. Due to any change in source we have to regenerate
+the exe file again after compiling
+
+                Interpreted Languages
+            ----------------------------
+Interpreted languages instructions are read line by line and then get executed and interacts with
+user in terminal so there is no need of an exe file to interact with user in case of interpreted languages.
+For running any file of interpreted languages machine must have installed that language.

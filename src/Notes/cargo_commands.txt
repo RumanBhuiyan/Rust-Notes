@@ -1,0 +1,9 @@
+cargo build => build your cargo project which means generate your project .exe file
+
+cargo run => build your project and load .exe file into terminal that's why it takes
+                more time than 'cargo build' and 'cargo check'
+
+cargo check => compiles your code and checks is there any problem, error or not
+                it doesn't load .exe file that's why it's faster than above 2 command.
+                Every Rustaceans use 'cargo check' to check their code compiled or not
+                and if everything is ok then they run 'cargo run' finally.
