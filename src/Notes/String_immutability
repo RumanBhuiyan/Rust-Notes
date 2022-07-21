@@ -1,0 +1,12 @@
+Why strings are immutable by default ?
+---------------------------------------
+
+Before exploring the answer of this question let's first understand the definition of string.
+So what is string ?
+
+Most people say that strings is an array of characters. It's false.
+Actually Strings is an array of bytes which represent characters using UTF-8 character encoding.
+
+Some greek or latin letters or alphabets take 2 or 3  bytes to represent only single alphabet. In these case
+if we change any of the byte value randomly then those bytes combine generate a different character than
+what it was before changing bytes value. That's why Rust doesn't allow programmer to change bytes value.

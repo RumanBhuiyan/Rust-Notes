@@ -1,0 +1,38 @@
+There are 4 types of memory allocation
+    i) register allocation
+    ii) static allocation
+    iii) stack allocation
+    iv) heap allocation
+
+static allocation:  variables declared like 'static age = 27' are static allocated.
+------------------  That means variables declared with static keyword are static allocated.
+                    N.B => static variables name should be all uppercase otherwise compiler objects.
+
+stack allocation:   variables, collections which size can be determined at compile time are stack allocated.
+-----------------   like , let a = 5, array etc. In-short we can say that if variable declaration starts with let
+                     keyword then that resource is stack allocated.
+
+                     N.B => access time for stack allocated resources are faster, and you can't manually allocate
+                     and deallocate stack allocated resources rather rust compiler does it. Though stack is faster
+                     than heap but it's limited.
+
+                     Suppose you created a heap allocated resource in main program and assigned it into a variable.
+                     It means that in stack this variable is just a stack pointer by which rust compiler deallocates
+                     resources after going out of scope. For example let b = Box::new(3), here b is stack pointer
+                     so at the time of de-allocation rust compiler firstly deallocate the heap resource then
+                     pop stack pointer variable from call stack.
+
+heap allocation:    Heap memory is of 2 type , reserved heap and free heap. When your programs start executing then
+----------------    a request is sent from kernel to operating system to give some sequential bytes that are required
+                    by that program. If such amount of bytes are available in virtual memory then Operating system
+                    will reserve them for that program otherwise it has to perform some smarter or naive algorithms
+                    to allocated memory for the program. As a result, allocating and deallocating becomes costly
+                    and time-consuming for heap allocated resources. That's why copying or cloning heap allocated
+                    resources are prohibited to perform rather told to follow ownership and borrowing model offered
+                    by Rust.
+
+In c/c++ you can also make heap allocated resources by using malloc(), calloc(), realloc() but at the end of your task
+you have to free() or delete() them. If you don't do so then this garbage will remain in memory which causes memory
+leakage. Rust deallocate any resource by itself if any resources go out of scope. You just have to follow the rules
+of borrow checker and rest will be taken care by Rust. Like peter parker rule greate power with great responsibility.
+As rust is providing you a great power so your responsibility is to follow borrow checker rules.

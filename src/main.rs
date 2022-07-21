@@ -1,3 +1,5 @@
+// #![allow(unused)]
+
 // mod command_line_arguments;
 // mod taking_user_input;
 // mod variable_shadowing;

@@ -1,0 +1,12 @@
+In Rust, We can implement methods for types like struct, enum, tuple-struct etc.
+         using directly impl like
+
+         impl <struct_name>{
+            //methods
+         }
+
+But we can't implement methods directly like above for primitive types like i32, f32 etc.
+
+It's a matter of joy that we can implement trait for any type. Rust allows it.
+So the safer way of implementing methods for any type is declaring trait first
+then implementing methods for that the type

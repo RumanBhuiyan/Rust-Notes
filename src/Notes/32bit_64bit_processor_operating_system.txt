@@ -1,0 +1,25 @@
+If your computer has 32-bit processor then it has = 2^32 number of memory locations
+        = 2^32
+        = 4294967296 bits
+        = 4194304 Kilo-bytes (KB)
+        = 4096 Mega-bytes (MB)
+        = 4 Giga-bytes (GB)
+
+That means your computer can take RAM of 4GB at max when running applications.
+
+when we open an application then that application loads into RAM from ROM and get started executing
+from RAM. If your computer is x86 or 32 bit then it means that your computer has 32-bit processor
+which can't take more than 4GB RAM at the time of running all applications.
+
+
+If your computer has 64-bit processor then it has = 2^64 number of memory locations
+        = 2^64
+        = 18446744073709551616 bits
+        = 18014398509481984 Kilo-bytes (KB)
+        = 17592186044416 Mega-bytes (MB)
+        = 17179869184 Giga-bytes (GB)
+        = 16777216 Tera-bytes (TB)
+        = 16384 Peta-bytes (PB)
+        = 16 Exa-Bytes (EB)
+
+That means your computer can take RAM of 16 Exa-Bytes at max when running applications.

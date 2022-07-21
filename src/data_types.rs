@@ -9,6 +9,9 @@
 //     usize takes memory basis on system like if computer is 32 bit then usize->u32 ,otherwise usize->u64
 // isize takes memory basis on system like if computer is 32 bit then isize->i32 ,otherwise isize->u64
 
+// default floating type is f64, in f32 => mantissa = 24 bit , exponent = 8 bit, can express unto 16 million
+//                               in f64 => mantissa = 53 bit , exponent = 11 bit, can express unto 9 millions of billions
+
 #![allow(unused_variables)]
 pub fn run(){
     // various data types

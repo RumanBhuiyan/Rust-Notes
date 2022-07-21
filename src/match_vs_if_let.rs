@@ -1,3 +1,9 @@
+/*
+    If let pattern can don anything that match expression can do. If let is a shorthand version of
+    match expression which we use just to handle one pattern instead of handling multiple pattern
+    in match expression.
+ */
+
 #![allow(unused)]
 pub fn run(){
     let keep = Some(5);
@@ -14,9 +20,9 @@ pub fn run(){
 
     // in some cases match statements can be verbose where we can use if let expression
     if let Some(value) = keep {
-        println!("value inside Keep : {}",get_value(keep));
+        println!("value inside Keep : {}",value);
     }else {
-        println!("value inside Keep2 : {}",get_value(keep2));
+        println!("value inside Keep2 : {}",0);
     }
 }
 

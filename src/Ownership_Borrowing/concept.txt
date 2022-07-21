@@ -1,0 +1,36 @@
+Assignment semantics :
+------------------------
+    let x = vec![1,2,3,4,5];
+    let y = x;
+There are 3 types of semantics or scenarios associated with assignment operation.
+They are :
+    i) shared semantics
+    ii) copy semantics
+    iii) moved semantics
+
+in shared semantics, both y and x share the same resources and both of them point the same resources
+in heap. When x is initialized then a stack frame is pushed onto call stack. stack frame has 4
+properties :
+            i) reference count (how many variables are sharing this resource)
+            ii) heap buffer pointer (pointer to tha data allocated in heap)
+            iii) length (length of the resource)
+            iv) capacity (current capacity of the allocated buffer)
+ in first line, at the time of x initialization reference count value is 1. after executing 2nd line
+ reference count becomes 2 as 2 variables(x,y) are sharing the same resource. If x or y refers to
+ another resource then reference count value is decreased. Thus, if any stack frames reference count
+ value is 0 then garbage collector drops the resource. Most garbage collected programming languages
+ work under the hood using this mechanism like python, java, go etc.
+ You can say that a shallow copy of x is assigned into y.
+
+in copy semantics, new heap allocation is done to copy resources of x to there. Then that buffer pointer
+is assigned to y. C++ follows this semantics. You can say that a deep copy of x is assigned to y.
+
+in moved semantics, Rust follows this approach. As Rust is memory safe and memory efficient, so it doesn't allow
+to copy same resource by default like c++ as it's costly and time-consuming. Rust doesn't allow share semantics also
+as if resources are dropped by x and y will be dangling pointer. That's why Rust moves ownership of x to y and
+x becomes un-initialized.
+
+N.B => When any variable is pushed onto call stack as a stack frame which has data buffer in heap in its stack frame
+        there are 3 properties. buffer pointer, length, capacity.
+
+

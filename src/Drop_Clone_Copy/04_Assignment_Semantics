@@ -1,0 +1,27 @@
+let v1 = vec![1,2,3,4,5]
+let v2 = v1
+
+Here in v2 = v1 statement, 3 types of semantics can be happened.
+    i) Share Semantics
+    ii) Copy Semantics
+    iii) Move Semantics
+
+Share Semantics:
+----------------
+Both v2 and v1 will point to the same heap buffer as like they are sharing the same resources. Their shared resources
+will be dropped by garbage collector in garbage collected programming languages like Python, Go etc.
+
+Copy Semantics:
+----------------
+Another heap buffer is allocated copying the resources from v1 so v2 and v1 will have same resources but in different
+memory location. You can think it as deep copy. Where garbage collector is absent such languages use this semantics
+like C++.
+
+Move Semantics:
+----------------
+Ownership of v1 will be moved to v2. v1 will no longer be able to access resources. This semantics is seen in Rust.
+Rust follow move semantics to provide us best performance guarantee. Because moving resources from one owner to another
+owner is more faster than creating new buffer then copying resources there.
+
+We can also implement Copy semantics by implementing Clone trait in Rust. But this will take much time for large
+resources so you will have to accept run time cost for cloning.
